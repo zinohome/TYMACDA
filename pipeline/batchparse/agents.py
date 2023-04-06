@@ -22,5 +22,14 @@ async def parse_signal(stream):
         log.debug("-------------------- Batch Get binary data --------------------")
         for data in datas:
             dev_mode = settings.DEV_MODE
+            if len(data) > 200:
+                log.debug('========******** Parse Statis singnal ********========')
+                parsed_dict = Ty2statis.from_bytes_to_dict(data)
+                log.debug(parsed_dict)
+            else:
+                log.debug('--------******** Parse Status singnal ********--------')
+                parsed_dict = Ty2status.from_bytes_to_dict(data)
+                log.debug(parsed_dict)
+
 
 

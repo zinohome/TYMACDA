@@ -2,7 +2,9 @@
 
 import kaitaistruct
 from kaitaistruct import KaitaiStruct, KaitaiStream, BytesIO
-
+import time
+from core.settings import settings
+from utils.log import log as log
 
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
     raise Exception("Incompatible Kaitai Struct Python API: 0.9 or later is required, but you have %s" % (kaitaistruct.__version__))
@@ -136,4 +138,38 @@ class Ty2status(KaitaiStruct):
         self.b_flt_seat_temp = self._io.read_bits_int_be(1) != 0
         self.b_flt_veh_temp = self._io.read_bits_int_be(1) != 0
 
-
+    def from_bytes_to_dict(bytesobj):
+        dev_mode = settings.DEV_MODE
+        nb5dict = Ty2status.from_bytes(bytesobj).__dict__.copy()
+        nb5dict[
+            'msg_calc_dvc_no'] = f"0{nb5dict['msg_header_lineid']}0{str(nb5dict['i_train_id']).zfill(2)}0{nb5dict['i_car_id']}"
+        nb5dict[
+            'msg_calc_train_no'] = f"0{nb5dict['msg_header_lineid']}0{str(nb5dict['i_train_id']).zfill(2)}"
+        nb5dict[
+            'msg_calc_dvc_time'] = f"20{nb5dict['msg_header_date_year']}-{nb5dict['msg_header_date_month']}-{nb5dict['msg_header_date_day']} {nb5dict['msg_header_date_hour']}:{nb5dict['msg_header_date_minute']}:{nb5dict['msg_header_date_second']}"
+        nb5dict['msg_calc_parse_time'] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        for key in ('_io', '_parent', '_root',
+                    'msg_reverse_2', 'msg_reverse_3', 'msg_reverse_4', 'msg_reverse_5', 'msg_reverse_6',
+                    'msg_reverse_7', 'msg_reverse_8', 'msg_reverse_8', 'msg_reverse_1', 'msg_reverse_10',
+                    'dvc_cfbk_revers0', 'dvc_cfbk_revers1', 'dvc_cfbk_revers2',
+                    'msg_header_date_year', 'msg_header_date_month', 'msg_header_date_day',
+                    'msg_header_date_hour', 'msg_header_date_minute', 'msg_header_date_second', 'msg_header_date_msecond'):
+            if key in nb5dict:
+                del nb5dict[key]
+        for key,value in nb5dict.items():
+            if isinstance(value, bool):
+                if value:
+                    nb5dict[key] = 1
+                else:
+                    nb5dict[key] = 0
+            if key in div100list:
+                if value / 100 == value // 100:
+                    nb5dict[key] = value // 100
+                else:
+                    nb5dict[key] = round(value / 100, 2)
+            if key in div10list:
+                if value / 10 == value // 10:
+                    nb5dict[key] = value // 10
+                else:
+                    nb5dict[key] = round(value / 10, 1)
+        return nb5dict
