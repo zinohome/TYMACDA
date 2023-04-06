@@ -28,10 +28,10 @@ async def split_signal(stream):
         for astr in asciidatalist:
             count += 1
             if count == 1:
-                astr = astr.removesuffix('000000')
+                astr = astr.removesuffix('0000')
                 cdatalist.append(astr)
             else:
-                astr = f"0201{astr}".removesuffix('000000')
+                astr = f"0201{astr}".removesuffix('0000')
                 cdatalist.append(astr)
         for cstr in cdatalist:
             clen = len(cstr)

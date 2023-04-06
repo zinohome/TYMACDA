@@ -138,6 +138,7 @@ class Ty2status(KaitaiStruct):
         self.b_flt_seat_temp = self._io.read_bits_int_be(1) != 0
         self.b_flt_veh_temp = self._io.read_bits_int_be(1) != 0
 
+
     def from_bytes_to_dict(bytesobj):
         dev_mode = settings.DEV_MODE
         nb5dict = Ty2status.from_bytes(bytesobj).__dict__.copy()
