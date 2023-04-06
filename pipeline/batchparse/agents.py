@@ -28,6 +28,8 @@ async def parse_signal(stream):
                 log.debug(parsed_dict)
             else:
                 log.debug('--------******** Parse Status singnal ********--------')
+                log.debug(data)
+                log.debug(len(data))
                 parsed_dict = Ty2status.from_bytes_to_dict(data)
                 log.debug(parsed_dict)
 
