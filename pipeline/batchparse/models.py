@@ -15,3 +15,5 @@ from core.settings import settings
 input_topic = app.topic(settings.SOURCE_TOPIC_NAME, value_serializer='raw')
 
 output_topic = app.topic(settings.PARSED_TOPIC_NAME, partitions=settings.TOPIC_PARTITIONS, value_serializer='json')
+
+output_statis_topic = app.topic(settings.PARSED_TOPIC_NAME+'_statis', partitions=settings.TOPIC_PARTITIONS, value_serializer='json')
