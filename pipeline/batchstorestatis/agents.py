@@ -10,7 +10,7 @@
 
 from app import app
 from core.settings import settings
-from pipeline.batchstore.models import input_topic
+from pipeline.batchstorestatis.models import input_topic
 from utils.log import log as log
 from utils.sensorpolyfit import SensorPolyfit
 from utils.tsutil import TSutil
@@ -23,5 +23,5 @@ async def store_signal(stream):
     async for datas in stream.take(settings.TSDB_BATCH, within=settings.TSDB_BATCH_TIME):
         log.debug("==================== Get parsed data batch ====================")
         dev_mode = settings.DEV_MODE
-        tu.batchinsert('status_macda', 'msg_calc_dvc_time', datas)
+        tu.batchinsert('statis_macda', 'msg_calc_dvc_time', datas)
         log.debug("Saved data with batch length: %s" % len(datas))

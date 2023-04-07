@@ -31,7 +31,7 @@ elif run_mode.strip().lower() == 'parse':
     app.discover('pipeline.batchparse')
 elif run_mode.strip().lower() == 'store':
     # run store
-    app.discover('pipeline.batchstore')
+    app.discover('pipeline.batchstore', 'pipeline.batchstorestatis')
 else:
     pass
     # run predict
