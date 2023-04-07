@@ -1,4 +1,4 @@
 #!/bin/bash
 IMGNAME=jointhero/macda
-IMGVERSION=nb-v1.0911
+IMGVERSION=ty-v1.0922
 docker build --no-cache -t $IMGNAME:$IMGVERSION .
