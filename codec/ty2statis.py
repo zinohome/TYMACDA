@@ -87,8 +87,8 @@ class Ty2statis(KaitaiStruct):
         self.dw_oppdcount_eh_u22 = self._io.read_u4be()
         self.dw_oppdcount_fad_u2 = self._io.read_u4be()
         self.dw_oppdcount_rad_u2 = self._io.read_u4be()
-        self.i_train_id = self._io.read_s2be()
-        self.i_car_id = self._io.read_s2be()
+        self.i_train_id = self._io.read_u2be()
+        self.i_car_id = self._io.read_u2be()
 
     def from_bytes_to_dict(bytesobj):
         dev_mode = settings.DEV_MODE

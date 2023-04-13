@@ -135,6 +135,6 @@ seq:
   - id: dw_oppdcount_rad_u2
     type: u4
   - id: i_train_id
-    type: s2
+    type: u2
   - id: i_car_id
-    type: s2
+    type: u2
