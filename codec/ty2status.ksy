@@ -55,7 +55,7 @@ seq:
   - id: i_suck_pres_u11
     type: s2
   - id: i_sup_heat_u11
-    type: u2
+    type: s2
   - id: i_eev_pos_u11
     type: u2
   - id: i_suck_temp_u12
@@ -63,7 +63,7 @@ seq:
   - id: i_suck_pres_u12
     type: s2
   - id: i_sup_heat_u12
-    type: u2
+    type: s2
   - id: i_eev_pos_u12
     type: u2
   - id: w_opmode_u2
@@ -85,7 +85,7 @@ seq:
   - id: i_suck_pres_u21
     type: s2
   - id: i_sup_heat_u21
-    type: u2
+    type: s2
   - id: i_eev_pos_u21
     type: u2
   - id: i_suck_temp_u22
@@ -93,7 +93,7 @@ seq:
   - id: i_suck_pres_u22
     type: s2
   - id: i_sup_heat_u22
-    type: u2
+    type: s2
   - id: i_eev_pos_u22
     type: u2
   - id: i_train_id
