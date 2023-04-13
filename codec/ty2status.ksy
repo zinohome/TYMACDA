@@ -27,7 +27,7 @@ seq:
   - id: i_set_temp
     type: s2
   - id: w_passen_load
-    type: s2
+    type: u2
   - id: i_seat_temp
     type: s2
   - id: i_veh_temp
@@ -37,7 +37,7 @@ seq:
   - id: i_veh_hum
     type: s2
   - id: w_opmode_u1
-    type: s2
+    type: u2
   - id: i_fat_u1
     type: s2
   - id: i_rat_u1
@@ -55,19 +55,19 @@ seq:
   - id: i_suck_pres_u11
     type: s2
   - id: i_sup_heat_u11
-    type: s2
+    type: u2
   - id: i_eev_pos_u11
-    type: s2
+    type: u2
   - id: i_suck_temp_u12
     type: s2
   - id: i_suck_pres_u12
     type: s2
   - id: i_sup_heat_u12
-    type: s2
+    type: u2
   - id: i_eev_pos_u12
-    type: s2
+    type: u2
   - id: w_opmode_u2
-    type: s2
+    type: u2
   - id: i_fat_u2
     type: s2
   - id: i_rat_u2
@@ -85,17 +85,17 @@ seq:
   - id: i_suck_pres_u21
     type: s2
   - id: i_sup_heat_u21
-    type: s2
+    type: u2
   - id: i_eev_pos_u21
-    type: s2
+    type: u2
   - id: i_suck_temp_u22
     type: s2
   - id: i_suck_pres_u22
     type: s2
   - id: i_sup_heat_u22
-    type: s2
+    type: u2
   - id: i_eev_pos_u22
-    type: s2
+    type: u2
   - id: i_train_id
     type: s2
   - id: i_car_id
@@ -234,6 +234,3 @@ seq:
     type: b1
   - id: b_flt_veh_temp
     type: b1
-
-
-

@@ -9,7 +9,8 @@ from utils.log import log as log
 if getattr(kaitaistruct, 'API_VERSION', (0, 9)) < (0, 9):
     raise Exception("Incompatible Kaitai Struct Python API: 0.9 or later is required, but you have %s" % (kaitaistruct.__version__))
 
-div10list = ['i_inner_temp','i_set_temp','w_passen_load','i_seat_temp','i_veh_temp','i_seat_hum','i_veh_hum','i_fat_u1','i_rat_u1','i_dft_u11','i_dft_u12','i_sat_u11','i_sat_u12','i_suck_temp_u11','i_suck_pres_u11','i_sup_heat_u11','i_eev_pos_u11','i_suck_temp_u12','i_suck_pres_u12','i_sup_heat_u12','i_eev_pos_u12','i_fat_u2','i_rat_u2','i_dft_u21','i_dft_u22','i_sat_u21','i_sat_u22','i_suck_temp_u21','i_suck_pres_u21','i_sup_heat_u21','i_eev_pos_u21','i_suck_temp_u22','i_suck_pres_u22','i_sup_heat_u22','i_eev_pos_u22']
+#div10list = ['i_inner_temp','i_set_temp','w_passen_load','i_seat_temp','i_veh_temp','i_seat_hum','i_veh_hum','i_fat_u1','i_rat_u1','i_dft_u11','i_dft_u12','i_sat_u11','i_sat_u12','i_suck_temp_u11','i_suck_pres_u11','i_sup_heat_u11','i_eev_pos_u11','i_suck_temp_u12','i_suck_pres_u12','i_sup_heat_u12','i_eev_pos_u12','i_fat_u2','i_rat_u2','i_dft_u21','i_dft_u22','i_sat_u21','i_sat_u22','i_suck_temp_u21','i_suck_pres_u21','i_sup_heat_u21','i_eev_pos_u21','i_suck_temp_u22','i_suck_pres_u22','i_sup_heat_u22','i_eev_pos_u22']
+div10list = ['i_inner_temp','i_set_temp','i_seat_temp','i_veh_temp','i_fat_u1','i_rat_u1','i_dft_u11','i_dft_u12','i_sat_u11','i_sat_u12','i_suck_temp_u11','i_suck_pres_u11','i_sup_heat_u11','i_eev_pos_u11','i_suck_temp_u12','i_suck_pres_u12','i_sup_heat_u12','i_eev_pos_u12','i_fat_u2','i_rat_u2','i_dft_u21','i_dft_u22','i_sat_u21','i_sat_u22','i_suck_temp_u21','i_suck_pres_u21','i_sup_heat_u21','i_eev_pos_u21','i_suck_temp_u22','i_suck_pres_u22','i_sup_heat_u22','i_eev_pos_u22']
 div100list = []
 
 class Ty2status(KaitaiStruct):
@@ -32,12 +33,12 @@ class Ty2status(KaitaiStruct):
         self.msg_header_date_msecond = self._io.read_s2be()
         self.i_inner_temp = self._io.read_s2be()
         self.i_set_temp = self._io.read_s2be()
-        self.w_passen_load = self._io.read_s2be()
+        self.w_passen_load = self._io.read_u2be()
         self.i_seat_temp = self._io.read_s2be()
         self.i_veh_temp = self._io.read_s2be()
         self.i_seat_hum = self._io.read_s2be()
         self.i_veh_hum = self._io.read_s2be()
-        self.w_opmode_u1 = self._io.read_s2be()
+        self.w_opmode_u1 = self._io.read_u2be()
         self.i_fat_u1 = self._io.read_s2be()
         self.i_rat_u1 = self._io.read_s2be()
         self.i_dft_u11 = self._io.read_s2be()
@@ -46,13 +47,13 @@ class Ty2status(KaitaiStruct):
         self.i_sat_u12 = self._io.read_s2be()
         self.i_suck_temp_u11 = self._io.read_s2be()
         self.i_suck_pres_u11 = self._io.read_s2be()
-        self.i_sup_heat_u11 = self._io.read_s2be()
-        self.i_eev_pos_u11 = self._io.read_s2be()
+        self.i_sup_heat_u11 = self._io.read_u2be()
+        self.i_eev_pos_u11 = self._io.read_u2be()
         self.i_suck_temp_u12 = self._io.read_s2be()
         self.i_suck_pres_u12 = self._io.read_s2be()
-        self.i_sup_heat_u12 = self._io.read_s2be()
-        self.i_eev_pos_u12 = self._io.read_s2be()
-        self.w_opmode_u2 = self._io.read_s2be()
+        self.i_sup_heat_u12 = self._io.read_u2be()
+        self.i_eev_pos_u12 = self._io.read_u2be()
+        self.w_opmode_u2 = self._io.read_u2be()
         self.i_fat_u2 = self._io.read_s2be()
         self.i_rat_u2 = self._io.read_s2be()
         self.i_dft_u21 = self._io.read_s2be()
@@ -61,12 +62,12 @@ class Ty2status(KaitaiStruct):
         self.i_sat_u22 = self._io.read_s2be()
         self.i_suck_temp_u21 = self._io.read_s2be()
         self.i_suck_pres_u21 = self._io.read_s2be()
-        self.i_sup_heat_u21 = self._io.read_s2be()
-        self.i_eev_pos_u21 = self._io.read_s2be()
+        self.i_sup_heat_u21 = self._io.read_u2be()
+        self.i_eev_pos_u21 = self._io.read_u2be()
         self.i_suck_temp_u22 = self._io.read_s2be()
         self.i_suck_pres_u22 = self._io.read_s2be()
-        self.i_sup_heat_u22 = self._io.read_s2be()
-        self.i_eev_pos_u22 = self._io.read_s2be()
+        self.i_sup_heat_u22 = self._io.read_u2be()
+        self.i_eev_pos_u22 = self._io.read_u2be()
         self.i_train_id = self._io.read_s2be()
         self.i_car_id = self._io.read_s2be()
         self.msg_reverse_3 = self._io.read_s2be()
